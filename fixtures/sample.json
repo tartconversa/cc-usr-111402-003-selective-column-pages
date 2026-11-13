@@ -1,0 +1,40 @@
+{
+  "version": 1,
+  "schema": {
+    "region": "text",
+    "amount": "i64"
+  },
+  "groups": [
+    {
+      "rows": [
+        {
+          "region": "CN",
+          "amount": 10
+        },
+        {
+          "region": null,
+          "amount": null
+        }
+      ]
+    },
+    {
+      "rows": [
+        {
+          "region": "",
+          "amount": -3
+        }
+      ]
+    }
+  ],
+  "query": {
+    "columns": [
+      "region",
+      "amount"
+    ],
+    "positions": [
+      2,
+      0,
+      2
+    ]
+  }
+}
