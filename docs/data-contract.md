@@ -21,3 +21,10 @@ where只接受结果严格为true的行。expression为null表示不限制。
 
 app.service.inspect → storage.freeze/digest → baseline.execute。sample.json描述的是现有可执行输入，服务输出附资料摘要。
 新增能力可以增加入口和计划结构，保留现有调用及输出语义；扩展格式应单独声明版本。
+
+## 列页扩展（data_version=2）
+
+app/columnar.py以独立的data_version=2二进制容器（.colpf）承载列页格式，与version=1并存、不修改旧文件。
+编码输入仍须满足上述i64/text类型、null与空串、行组边界和物理行号契约；魔数、数据版本与每页编码标记自描述。
+按列投影与按物理行号（可重复、乱序）选择解码，空位只占位图不占值流序号；具体字节布局、编码选择、定位锚点、
+校验和与原子发布见[列页格式](columnar-format.md)。read_dataset按内存资料/容器路径分派新旧两条读取路径。
